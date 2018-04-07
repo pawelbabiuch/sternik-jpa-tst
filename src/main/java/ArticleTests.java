@@ -42,6 +42,8 @@ public class ArticleTests {
 //            
 //            removeArticle(id);
             
+            System.out.println("Article: " + ud.getArticles());
+            
             
         } finally {
             if (em != null && em.isOpen()) {

@@ -38,7 +38,7 @@ public class UserDetails {
     @Column
     private String name;
     
-    @Transient
+    @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
     private List<Article> articles;
     
     @Transient
