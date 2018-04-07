@@ -41,10 +41,10 @@ public class UserDetails {
     @OneToMany(mappedBy="user", fetch=FetchType.EAGER)
     private List<Article> articles;
     
-    @Transient
+    @Enumerated(EnumType.STRING)
     private UserStatus userStatus;
     
-    @Transient
+    @Temporal(TemporalType.TIMESTAMP)
     private Date statusDate;
     
     public List<Article> getArticles() {

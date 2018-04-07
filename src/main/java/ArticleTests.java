@@ -1,6 +1,7 @@
 package main.java;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -25,6 +26,8 @@ public class ArticleTests {
             UserDetails ud = new UserDetails();
             ud.setName("name pb");
             ud.setPassword("password");
+            ud.setStatusDate(new Date());
+            ud.setUserStatus(UserStatus.INACTIVE);
             
             //em.persist(ud);
             
