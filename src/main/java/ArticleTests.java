@@ -15,22 +15,32 @@ public class ArticleTests {
 	
     public static void main(String[] args) throws IOException {
 
-        Long id;
+    	int id;
         
         try {
             EntityManagerFactory emf = Persistence.createEntityManagerFactory("h2-eclipselink");
             em = emf.createEntityManager();
             em.getTransaction().begin();
             
-            Article art = createArticle(new Article("Nazwa 1", "Tresc 1"));
-            System.out.println("Wyciagnieto: " + getArticle(art.getId()).toString());
-            id = art.getId();
+            UserDetails ud = new UserDetails();
+            ud.setName("name pb");
+            ud.setPassword("password");
             
-            em.close();
-            em = emf.createEntityManager();
-            em.getTransaction().begin();
+            //em.persist(ud);
             
-            removeArticle(id);
+            Article art = new Article("Nazwa 1", "Tresc 1", 100);
+            art.setUser(ud);
+            
+            createArticle(art);
+            
+//            System.out.println("Wyciagnieto: " + getArticle(art.getId()).toString());
+//            id = art.getId();
+            
+//            em.close();
+//            em = emf.createEntityManager();
+//            em.getTransaction().begin();
+//            
+//            removeArticle(id);
             
             
         } finally {
@@ -48,11 +58,11 @@ public class ArticleTests {
     	return art;
     }
     
-    public static Article getArticle(Long articleID) {
+    public static Article getArticle(int articleID) {
     	return em.find(Article.class, articleID);
     }
 
-    public static void removeArticle(Long articleID) {
+    public static void removeArticle(int articleID) {
     	Article art = getArticle(articleID);
     	em.remove(art);
     	em.getTransaction().commit();
