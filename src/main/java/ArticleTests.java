@@ -33,9 +33,9 @@ public class ArticleTests {
             
             Article art = new Article("Nazwa 1", "Tresc 1", 100);
             art.setUser(ud);
-            
+           
             createArticle(art);
-            
+            id = art.getId();
 //            System.out.println("Wyciagnieto: " + getArticle(art.getId()).toString());
 //            id = art.getId();
             
@@ -44,6 +44,7 @@ public class ArticleTests {
 //            em.getTransaction().begin();
 //            
 //            removeArticle(id);
+            
             
             System.out.println("Article: " + ud.getArticles());
             
@@ -66,7 +67,7 @@ public class ArticleTests {
     public static Article getArticle(int articleID) {
     	return em.find(Article.class, articleID);
     }
-
+    
     public static void removeArticle(int articleID) {
     	Article art = getArticle(articleID);
     	em.remove(art);

@@ -22,8 +22,8 @@ import javax.persistence.Version;
 
 
 @Entity
+@NamedQuery(name="UserDetails.findAll", query="SELECT DISTINCT u FROM UserDetails u LEFT JOIN FETCH u.articles")
 public class UserDetails {
-
 
     @Id
     @GeneratedValue
